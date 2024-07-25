@@ -6,20 +6,17 @@ const destroyBoxes = () => {
 }
 const createBoxes = (amount) => {
   destroyBoxes();
+  let boxesHTML = '';
   let size = 30;
   for (let i = 0; i < amount; i++) {
-    const div = document.createElement('div');
-    div.style.width = `${size}px`;
-    div.style.height = `${size}px`;
-    div.style.backgroundColor = getRandomHexColor();
-    boxesContainer.append(div);
+    const divHTML = `<div style="width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()};"></div>`;
+    boxesHTML += divHTML;
     size += 10;
   }
+  boxesContainer.innerHTML = boxesHTML;
 }
 const getRandomHexColor = () => {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
+  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
 };
 const onBtnCreate = (event) => {
   const input = document.querySelector('[type="number"]');
